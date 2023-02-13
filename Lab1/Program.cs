@@ -27,7 +27,6 @@ namespace Lab1
                     intKeyValuePairs.Add(new KeyValuePair<int, int>(i, i + 42));
                 }
 
-<<<<<<< Updated upstream
                 var dictionaryKeyValueMap = new DictionaryKeyValueMap<int, int>();
                 var bstKeyValueMap = new BinarySearchTreeKeyValueMap<int, int>();
                 var avlKeyValueMap = new AVLTreeKeyValueMap<int, int>();
@@ -39,17 +38,7 @@ namespace Lab1
                 //Console.WriteLine("DictionaryKeyValueMap");
                 // Console.WriteLine("BSTKeyValueMap");
                 totalOrderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
-=======
-                //var dictionaryKeyValueMap = new DictionaryKeyValueMap<int, int>();
-                var bstKeyValueMap = new BinarySearchTreeKeyValueMap<int, int>();
-                var avlKeyValueMap = new AVLTreeKeyValueMap<int, int>();
-                var rbtKeyValueMap = new RedBlackTreeKeyValueMap<int, int>();
 
-                //Console.WriteLine("DictionaryKeyValueMap");
-                Console.WriteLine("BSTKeyValueMap");
-                Console.WriteLine("Ordered");
-                CreateKeyValueMap<int, int>(dictionaryKeyValueMap, intKeyValuePairs);
->>>>>>> Stashed changes
 
                 totalOrderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
 
@@ -102,15 +91,47 @@ namespace Lab1
                 IKeyValueMap<TKey, TValue> keyValueMap,
                 List<KeyValuePair<TKey, TValue>> keyValuePairs)
         {
-            return 0.0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            // do the work
+
+            foreach (var kvp in keyValuePairs)
+            {
+                keyValueMap.Get(kvp.Key);
+            }
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+            return stopwatch.Elapsed.TotalSeconds;
+
+
         }
+
 
         //TODO
         public static double RemoveKeyValueMap<TKey, TValue>(
                 IKeyValueMap<TKey, TValue> keyValueMap,
                 List<KeyValuePair<TKey, TValue>> keyValuePairs)
         {
-            return 0.0;
+            Stopwatch stopwatch = new Stopwatch();
+
+            stopwatch.Start();
+            // do the work
+
+            foreach (var kvp in keyValuePairs)
+            {
+                keyValueMap.Remove(kvp.Key);
+            }
+
+            stopwatch.Stop();
+
+            Console.WriteLine(stopwatch.Elapsed.TotalSeconds);
+            return stopwatch.Elapsed.TotalSeconds;
+
+
         }
+
     }
 }
