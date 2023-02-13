@@ -27,6 +27,7 @@ namespace Lab1
                     intKeyValuePairs.Add(new KeyValuePair<int, int>(i, i + 42));
                 }
 
+<<<<<<< Updated upstream
                 var dictionaryKeyValueMap = new DictionaryKeyValueMap<int, int>();
                 var bstKeyValueMap = new BinarySearchTreeKeyValueMap<int, int>();
                 var avlKeyValueMap = new AVLTreeKeyValueMap<int, int>();
@@ -38,6 +39,17 @@ namespace Lab1
                 //Console.WriteLine("DictionaryKeyValueMap");
                 // Console.WriteLine("BSTKeyValueMap");
                 totalOrderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+=======
+                //var dictionaryKeyValueMap = new DictionaryKeyValueMap<int, int>();
+                var bstKeyValueMap = new BinarySearchTreeKeyValueMap<int, int>();
+                var avlKeyValueMap = new AVLTreeKeyValueMap<int, int>();
+                var rbtKeyValueMap = new RedBlackTreeKeyValueMap<int, int>();
+
+                //Console.WriteLine("DictionaryKeyValueMap");
+                Console.WriteLine("BSTKeyValueMap");
+                Console.WriteLine("Ordered");
+                CreateKeyValueMap<int, int>(dictionaryKeyValueMap, intKeyValuePairs);
+>>>>>>> Stashed changes
 
                 totalOrderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
 

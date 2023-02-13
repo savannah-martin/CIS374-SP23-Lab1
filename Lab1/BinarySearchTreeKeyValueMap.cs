@@ -25,14 +25,15 @@ namespace Lab1
 
         public bool Remove(TKey key)
         {
-            if (binarySearchTreeMap.ContainsKey(key) )
+            if (binarySearchTreeMap.ContainsKey(key))
             {
                 binarySearchTreeMap.Remove(key);
                 return true;
             }
-            else {
+            else
+            {
                 return false;
             }
-        }
+        }        
     }
 }
