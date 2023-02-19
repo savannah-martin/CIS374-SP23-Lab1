@@ -17,6 +17,11 @@ namespace Lab1
             avlTreeMap.Add(key, value);
         }
 
+        public void Clear()
+        {
+            avlTreeMap.Clear();
+        }
+
         public KeyValuePair<TKey, TValue> Get(TKey key)
         {
             TValue value;

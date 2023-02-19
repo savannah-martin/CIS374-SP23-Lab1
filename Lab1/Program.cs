@@ -9,7 +9,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            int MAX = 100000;
+            int MAX = 10_000_000;
             int ITERATIONS = 11;
 
             double totalOrderedCreate = 0;
@@ -44,31 +44,42 @@ namespace Lab1
 
                 keyValueMap.Clear();
                 // Ordered
-                totalOrderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                //totalOrderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
                 //totalHeightOrdered += keyValueMap.Height;
-
                 //totalOrderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                //totalOrderedRemove += RemoveKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
 
                 // Unordered
                 intKeyValuePairs.Shuffle();
                 keyValueMap.Clear();
-                //totalUnorderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                totalUnorderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
                 //totalHeightUnordered += keyValueMap.Height;
+                totalUnorderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                totalUnorderedRemove += RemoveKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+
 
             }
 
             Console.WriteLine(keyValueMap.GetType());
 
-            Console.WriteLine("Ordered");
+            Console.WriteLine("Order Insert");
             Console.WriteLine(totalOrderedCreate / ITERATIONS);
+            Console.WriteLine("Order Height");
             Console.WriteLine(totalHeightOrdered/ ITERATIONS);
+            Console.WriteLine("Order Lookup");
+            Console.WriteLine(totalOrderedGet / ITERATIONS);
+            Console.WriteLine("Order Remove");
+            Console.WriteLine(totalOrderedRemove / ITERATIONS);
 
-            Console.WriteLine("Unordered");
+
+            Console.WriteLine("Random Insert");
             Console.WriteLine(totalUnorderedCreate / ITERATIONS);
+            Console.WriteLine("Random Height");
             Console.WriteLine(totalHeightUnordered / ITERATIONS);
-
-
-
+            Console.WriteLine("Random Lookup");
+            Console.WriteLine(totalUnorderedGet / ITERATIONS);
+            Console.WriteLine("Random Remove");
+            Console.WriteLine(totalUnorderedRemove / ITERATIONS);
         }
 
 

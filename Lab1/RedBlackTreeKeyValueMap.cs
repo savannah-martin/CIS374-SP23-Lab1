@@ -17,6 +17,11 @@ namespace Lab1
             redBlackTreeMap.Add(key, value);
         }
 
+        public void Clear()
+        {
+            redBlackTreeMap.Clear();
+        }
+
         public KeyValuePair<TKey, TValue> Get(TKey key)
         {
             TValue value;
