@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using DSA.DataStructures.Trees;
 
 namespace Lab1
@@ -34,6 +35,11 @@ namespace Lab1
             {
                 return false;
             }
-        }        
+        }
+
+        public void Clear()
+        {
+            binarySearchTreeMap.Clear();
+        }
     }
 }

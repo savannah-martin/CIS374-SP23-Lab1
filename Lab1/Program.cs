@@ -10,13 +10,28 @@ namespace Lab1
         static void Main(string[] args)
         {
             int MAX = 100000;
-            int ITERATIONS = 51;
+            int ITERATIONS = 11;
 
             double totalOrderedCreate = 0;
             double totalUnorderedCreate = 0;
 
             double totalOrderedGet = 0;
+            double totalUnorderedGet = 0;
+
+            double totalOrderedRemove = 0;
+            double totalUnorderedRemove = 0;
+
+            double totalHeightOrdered = 0;
+            double totalHeightUnordered = 0;
+
             IKeyValueMap<int, int> keyValueMap = null ;
+
+            var dictionaryKeyValueMap = new DictionaryKeyValueMap<int, int>();
+            var bstKeyValueMap = new BinarySearchTreeKeyValueMap<int, int>();
+            var avlKeyValueMap = new AVLTreeKeyValueMap<int, int>();
+            var redblackKeyValueMap = new RedBlackTreeKeyValueMap<int, int>();
+
+            keyValueMap = bstKeyValueMap;
 
             for (int c = 0; c < ITERATIONS; c++)
             {
@@ -27,36 +42,30 @@ namespace Lab1
                     intKeyValuePairs.Add(new KeyValuePair<int, int>(i, i + 42));
                 }
 
-                var dictionaryKeyValueMap = new DictionaryKeyValueMap<int, int>();
-                var bstKeyValueMap = new BinarySearchTreeKeyValueMap<int, int>();
-                var avlKeyValueMap = new AVLTreeKeyValueMap<int, int>();
-                var redblackKeyValueMap = new RedBlackTreeKeyValueMap<int, int>();
-
-
-                keyValueMap = bstKeyValueMap;
-
-                //Console.WriteLine("DictionaryKeyValueMap");
-                // Console.WriteLine("BSTKeyValueMap");
+                keyValueMap.Clear();
+                // Ordered
                 totalOrderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                //totalHeightOrdered += keyValueMap.Height;
 
+                //totalOrderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
 
-                totalOrderedGet += QueryKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
-
-                //Console.WriteLine("Unordered");
+                // Unordered
                 intKeyValuePairs.Shuffle();
-                dictionaryKeyValueMap = new DictionaryKeyValueMap<int, int>();
-                totalUnorderedCreate += CreateKeyValueMap<int, int>(dictionaryKeyValueMap, intKeyValuePairs);
-                //bstKeyValueMap = new BinarySearchTreeKeyValueMap<int, int>();
-                //CreateKeyValueMap<int, int>(bstKeyValueMap, intKeyValuePairs);
+                keyValueMap.Clear();
+                //totalUnorderedCreate += CreateKeyValueMap<int, int>(keyValueMap, intKeyValuePairs);
+                //totalHeightUnordered += keyValueMap.Height;
+
             }
-            //Console.WriteLine("DictionaryKeyValueMap");
+
             Console.WriteLine(keyValueMap.GetType());
 
             Console.WriteLine("Ordered");
             Console.WriteLine(totalOrderedCreate / ITERATIONS);
+            Console.WriteLine(totalHeightOrdered/ ITERATIONS);
 
             Console.WriteLine("Unordered");
             Console.WriteLine(totalUnorderedCreate / ITERATIONS);
+            Console.WriteLine(totalHeightUnordered / ITERATIONS);
 
 
 
